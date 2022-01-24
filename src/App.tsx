@@ -1,11 +1,12 @@
-import React from 'react';
-import { Counter } from './features/counter/Counter';
+import ShoppingList from './feature/shoppingCart/shopList'
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-        <Counter />
+    <>
+      <h2>Shopping Cart Example</h2>
+      <hr />
+      <ShoppingList />
+    </>
   );
 }
-
-export default App;
