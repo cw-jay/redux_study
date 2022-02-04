@@ -4,7 +4,7 @@ interface productType {
   title: string
 }
 
-export default function Product ({ price, quantity, title }: productType) {
+export default function Product({ price, quantity, title }: productType) {
   return (
     <div>
       {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}

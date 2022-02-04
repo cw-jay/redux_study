@@ -1,4 +1,5 @@
-import ShoppingList from './feature/shoppingCart/shopList'
+import ProductList from '@/components/ProductList'
+import CartList from '@/components/CartList'
 import './App.css';
 
 export default function App() {
@@ -6,7 +7,9 @@ export default function App() {
     <>
       <h2>Shopping Cart Example</h2>
       <hr />
-      <ShoppingList />
+      <ProductList />
+      <hr />
+      <CartList />
     </>
   );
 }

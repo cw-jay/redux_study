@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from '@/interface'
-import { RootState } from '@/store';
+import { RootState } from '@/reducers';
 import getItemIndex from '@/common';
 
 const initialState: CartItem[] = [
@@ -24,6 +24,9 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
+        setInitilStateFromApi(state: CartItem[], action: PayloadAction<any>) {
+            state = action.payload
+        },
         decrementQuantity(state: CartItem[], action: PayloadAction<CartItem>) {
             const itemIndex = getItemIndex(state, action.payload.id);
             if (itemIndex >= 0 && state[itemIndex].quantity > 0) {
