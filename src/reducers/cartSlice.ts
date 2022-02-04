@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '@/reducers';
 import { CartItem } from '@/interface';
 import getItemIndex from '@/common';
 
-const initialState: CartItem[] = [
-];
+const initialState: CartItem[] = [];
 
 export const cartSlice = createSlice({
     name: 'cart',
@@ -30,7 +28,5 @@ export const {
   addToCart,
   checkout
 } = cartSlice.actions;
-
-export const cartItems = (state: RootState) => state.cart;
 
 export default cartSlice.reducer;

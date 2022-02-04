@@ -1,31 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from '@/interface'
-import { RootState } from '@/reducers';
 import getItemIndex from '@/common';
 
-const initialState: CartItem[] = [
-    {
-        "id": "3f60de24-1815-4d88-a8dc-5ceda3f41bdc",
-        "name": "Air Jordan 1 Mid",
-        "category": "Men's Shoes",
-        "price": 115,
-        "quantity": 2
-    },
-    {
-        "id": "d52fd362-1080-46b3-a43c-d64f7a6825ab",
-        "name": "Nike Air Zoom-Type",
-        "category": "Men's Shoes",
-        "price": 150,
-        "quantity": 3
-    }
-];
+const initialState: CartItem[] = [];
 
 export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        setInitilStateFromApi(state: CartItem[], action: PayloadAction<any>) {
-            state = action.payload
+        setInitilStateFromAPI(state: CartItem[], action: PayloadAction<any>) {
+            state.push({
+                "id": "3f60de24-1815-4d88-a8dc-5ceda3f41bdc",
+                "name": "Air Jordan 1 Mid",
+                "category": "Men's Shoes",
+                "price": 115,
+                "quantity": 2
+            },
+            {
+                "id": "d52fd362-1080-46b3-a43c-d64f7a6825ab",
+                "name": "Nike Air Zoom-Type",
+                "category": "Men's Shoes",
+                "price": 150,
+                "quantity": 3
+            })
         },
         decrementQuantity(state: CartItem[], action: PayloadAction<CartItem>) {
             const itemIndex = getItemIndex(state, action.payload.id);
@@ -34,16 +31,15 @@ export const productSlice = createSlice({
             }
         },
         resetQuantity() {
-            return initialState
+            setInitilStateFromAPI([])
         },
     }
 });
 
 export const {
     decrementQuantity,
-    resetQuantity
+    resetQuantity,
+    setInitilStateFromAPI
 } = productSlice.actions;
-
-export const products = (state: RootState) => state.products;
 
 export default productSlice.reducer;

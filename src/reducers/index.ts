@@ -8,11 +8,11 @@ const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-const getCartItems = (state: RootState) => state.cart;
-const getProducts = (state: RootState) => state.products;
+export const getCartItems = (state: RootState) => state.cart;
+export const getProducts = (state: RootState) => state.products;
 
-export const getTotalPrice = (state: RootState) => {
-    return getCartItems(state).reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)
+export const getTotalPrice = () => {
+    return getCartItems(store.getState()).reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)
 }
 
 export default store; 

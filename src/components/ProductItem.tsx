@@ -1,5 +1,5 @@
-import Product from './Product'
 import { CartItem } from '@/interface'
+import Product from './Product'
 
 interface productItemType {
   product: CartItem,

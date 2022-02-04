@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import { CartItem } from '@/interface';
-
-import {
-  addToCart
-} from '@/reducers/cartSlice';
-
-import {
-  products,
-  decrementQuantity
-} from '@/reducers/productSlice';
-
+import { getProducts } from '@/reducers'
+import { addToCart } from '@/reducers/cartSlice';
+import { decrementQuantity, setInitilStateFromAPI } from '@/reducers/productSlice';
+import { fetchProductList } from '@/api/apiService';
 import ProductItem from '@/components/ProductItem'
+import { useEffect } from 'react';
 
 export default function ProductList(): JSX.Element {
-  const productList = useSelector(products);
+  const productList = useSelector(getProducts);
   const dispatch = useDispatch();
+  useEffect(() => {
+    fetchProductList().then(res => {
+      console.log('items: ', res.json())
+      dispatch(setInitilStateFromAPI(res))
+    })
+  }, [dispatch])
   const onClickAddToCart = (product: CartItem) => {
     const addedItem: CartItem = {
       ...product,
@@ -27,7 +27,7 @@ export default function ProductList(): JSX.Element {
   return (
     <div>
       <h3>Products</h3>
-      {productList.map(product =>
+      {productList.length > 0 && productList.map(product =>
           <ProductItem
             key={product.id}
             product={product}
