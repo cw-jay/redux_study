@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../store/store';
-import { CartItem } from '../../interface'
-import getItemIndex from '../../common';
+import { RootState } from '@/store';
+import { CartItem } from '@/interface';
+import getItemIndex from '@/common';
 
 const initialState: CartItem[] = [
 ];
@@ -23,7 +23,7 @@ export const cartSlice = createSlice({
             alert('구매가 완료되었습니다')
             return initialState
         }
-    },
+    }
 });
 
 export const {

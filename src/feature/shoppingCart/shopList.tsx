@@ -12,10 +12,10 @@ import {
   resetQuantity
 } from './productSlice';
 
-import Cart from '../../components/Cart'
-import ProductItem from '../../components/ProductItem'
-import ProductsList from '../../components/ProductsList'
-import { CartItem } from '../../interface';
+import Cart from '@/components/Cart'
+import ProductItem from '@/components/ProductItem'
+import ProductsList from '@/components/ProductsList'
+import { CartItem } from '@/interface';
 
 export default function ShoppingList() {
   const cartList = useSelector(cartItems);

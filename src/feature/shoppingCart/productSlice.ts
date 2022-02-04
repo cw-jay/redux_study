@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem } from '../../interface'
-import { RootState } from '../../store/store';
-import getItemIndex from '../../common';
+import { CartItem } from '@/interface'
+import { RootState } from '@/store';
+import getItemIndex from '@/common';
 
 const initialState: CartItem[] = [
     {
@@ -24,7 +24,7 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        decrementQuantity(state, action: PayloadAction<CartItem>) {
+        decrementQuantity(state: CartItem[], action: PayloadAction<CartItem>) {
             const itemIndex = getItemIndex(state, action.payload.id);
             if (itemIndex >= 0 && state[itemIndex].quantity > 0) {
                 state[itemIndex].quantity -= 1
@@ -32,8 +32,8 @@ export const productSlice = createSlice({
         },
         resetQuantity() {
             return initialState
-        }
-    },
+        },
+    }
 });
 
 export const {

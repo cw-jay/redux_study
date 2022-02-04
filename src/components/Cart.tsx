@@ -1,5 +1,5 @@
 import Product from './Product'
-import { CartItem } from '../interface'
+import { CartItem } from '@/interface'
 
 interface CartItemType {
   products: CartItem[]
@@ -7,7 +7,8 @@ interface CartItemType {
   onCheckoutClicked: () => void
 }
 
-export default function Cart({ products, total, onCheckoutClicked }: CartItemType) {
+export default function Cart(props: CartItemType) {
+  const { products, total, onCheckoutClicked } = props
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>

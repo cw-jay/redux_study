@@ -1,6 +1,5 @@
-import React from 'react'
 import Product from './Product'
-import { CartItem } from '../interface'
+import { CartItem } from '@/interface'
 
 interface productItemType {
   product: CartItem,
