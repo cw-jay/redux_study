@@ -11,10 +11,11 @@ export default function ProductList(): JSX.Element {
   const productList = useSelector(getProducts);
   const dispatch = useDispatch();
   useEffect(() => {
-    fetchProductList().then(res => {
-      console.log('items: ', res.json())
-      dispatch(setInitilStateFromAPI(res))
-    })
+      fetchProductList()
+      .then(res => res.json())
+      .then(data => {
+        dispatch(setInitilStateFromAPI(data))
+      })
   }, [dispatch])
   const onClickAddToCart = (product: CartItem) => {
     const addedItem: CartItem = {
@@ -27,7 +28,7 @@ export default function ProductList(): JSX.Element {
   return (
     <div>
       <h3>Products</h3>
-      {productList.length > 0 && productList.map(product =>
+      {productList.length > 0 && productList.map((product) =>
           <ProductItem
             key={product.id}
             product={product}

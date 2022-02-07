@@ -16,7 +16,7 @@ export default function CartList(): JSX.Element {
   const nodes = hasItemInCart ? (
     cartList.map(product =>
       <Product
-        title={product.name}
+        title={product.title}
         price={product.price}
         quantity={product.quantity}
         key={product.id}

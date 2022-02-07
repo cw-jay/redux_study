@@ -10,7 +10,7 @@ export default function ProductItem ({ product, onAddToCartClicked }: productIte
   return (
     <div style={{ marginBottom: 20 }}>
       <Product
-        title={product.name}
+        title={product.title}
         price={product.price}
         quantity={product.quantity} />
       <button
